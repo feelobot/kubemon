@@ -1,2 +1,2 @@
 # kubemon
-Kubernetes Monitoring with Influx/Grafana/Kapacitor/Heapster
+Kubernetes Monitoring & Alerting with Influx/Grafana/Kapacitor/Heapster

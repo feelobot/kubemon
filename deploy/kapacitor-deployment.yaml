@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: "kapacitor"
+  labels:
+    app: "kapacitor"
+  namespace: kube-system
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        service: "kapacitor"
+        name: "kapacitor"
+        app: "kapacitor"
+    spec:
+      containers:
+        - name: "kapacitor"
+          image: "kapacitor:0.13.1-alpine" #1.0.0-beta1-alpine"
+          envs: 
+            - name:
+              value:
+          resources:
+            requests:
+              memory: "2Gi"
+              cpu: "2"
+            limits:
+              memory: "4Gi"
+              cpu: "4"
+          ports:
+            - containerPort: 9092
+          imagePullPolicy: "Always"

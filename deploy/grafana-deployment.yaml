@@ -4,7 +4,7 @@ metadata:
   name: "grafana"
   labels:
     app: "grafana"
-  namespace: kube-system
+  namespace: "prod"
 spec:
   replicas: 1
   template:
@@ -19,7 +19,7 @@ spec:
           image: "grafana/grafana:3.1.0-beta1"
           env: 
             - name: GF_SERVER_ROOT_URL
-              value: http://grafana.kube-system.svc.cluster.local:3000
+              value: http://grafana.prod.svc.cluster.local:3000
             - name: GF_SECURITY_ADMIN_PASSWORD
               value: secret
           #resources:

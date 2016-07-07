@@ -17,9 +17,17 @@ spec:
       containers:
         - name: "kapacitor"
           image: "kapacitor:0.13.1-alpine" #1.0.0-beta1-alpine"
-          envs: 
-            - name:
-              value:
+          env:
+            - name: KAPACITOR_HOSTNAME
+              value: "http://kapacitor.kube-system.svc.cluster.local:9092"
+            - name: KAPACITOR_LOGGING_LEVEL
+              value: "INFO"
+            - name: KAPACITOR_REPORTING_ENABLED
+              value: "false"
+            - name: KAPACITOR_INFLUXDB_0_URLS_0
+              value: "http://influxdb.kube-system.svc.cluster.local:8086/"
+            - name: KAPACITOR_LOGGING_LEVEL
+              value: "DEBUG"
           resources:
             requests:
               memory: "2Gi"

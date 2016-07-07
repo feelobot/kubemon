@@ -1,0 +1,9 @@
+stream
+    // Select just the cpu measurement from our example database.
+    |from()
+        .measurement('cpu/usage')
+    |alert()
+        // Always alert
+        .crit(lambda: TRUE)
+        // Whenever we get an alert write it to a file.
+        .log('/tmp/alerts.log')

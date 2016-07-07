@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kapacitor
+  labels:
+    app: kapacitor
+  namespace: kube-system
+spec:
+  ports:
+  - port: 9092
+    protocol: TCP
+    targetPort: 9092
+    name: stream
+  selector:
+    app: kapacitor

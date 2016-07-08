@@ -16,10 +16,10 @@ spec:
     spec:
       containers:
         - name: "kapacitor"
-          image: "kapacitor:0.13.1-alpine" #1.0.0-beta1-alpine"
+          image: "kapacitor:0.13.1" #1.0.0-beta1-alpine"
           env:
             - name: KAPACITOR_HOSTNAME
-              value: "http://kapacitor.kube-system.svc.cluster.local:9092"
+              value: "kapacitor.kube-system.svc.cluster.local"
             - name: KAPACITOR_LOGGING_LEVEL
               value: "INFO"
             - name: KAPACITOR_REPORTING_ENABLED
@@ -37,4 +37,6 @@ spec:
               cpu: "4"
           ports:
             - containerPort: 9092
+            - containerPort: 43309
+              name: udp
           imagePullPolicy: "Always"

@@ -1,0 +1,11 @@
+batch
+    |query('''
+        SELECT value
+        FROM "k8s"."default"."cpu/limit"
+    ''')
+        .period(5m)
+        .every(5m)
+        .groupBy(time(1m))
+    |alert()
+        .crit(lambda: TRUE)
+        .log('/tmp/alerts.log')

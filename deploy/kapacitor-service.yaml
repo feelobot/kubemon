@@ -11,5 +11,9 @@ spec:
     protocol: TCP
     targetPort: 9092
     name: stream
+  - port: 43309
+    protocol: UDP
+    targetPort: 43309
+    name: subscription
   selector:
     app: kapacitor

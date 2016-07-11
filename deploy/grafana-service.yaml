@@ -4,12 +4,14 @@ metadata:
   name: grafana
   labels:
     app: grafana
-  namespace: prod
+#  namespace: prod
 spec:
   ports:
   - port: 3000
     protocol: TCP
     targetPort: 3000
     name: external
+    nodePort: 30901
   selector:
     app: grafana
+  type: NodePort

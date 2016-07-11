@@ -27,5 +27,8 @@ spec:
           limits:
             cpu: "2"
             memory: "2Gi"
+      nodeSelector:
+        caste: peasant
+
         
 

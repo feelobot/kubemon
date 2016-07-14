@@ -1,0 +1,1677 @@
+{
+  "id": 1,
+  "title": "Pod Stats",
+  "tags": [],
+  "style": "dark",
+  "timezone": "browser",
+  "editable": true,
+  "hideControls": false,
+  "sharedCrosshair": false,
+  "rows": [
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 11,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "hideEmpty": true,
+            "hideZero": true,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "$tag_namespace_name:$tag_pod_name",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "namespace_name"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "pod_name"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "cpu/usage_rate",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "namespace_name",
+                  "operator": "=~",
+                  "value": "/^$Namespace$/"
+                },
+                {
+                  "condition": "AND",
+                  "key": "labels",
+                  "operator": "=~",
+                  "value": "/$App/"
+                },
+                {
+                  "condition": "AND",
+                  "key": "pod_name",
+                  "operator": "=~",
+                  "value": "/^$Pod$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "CPU",
+          "tooltip": {
+            "msResolution": false,
+            "shared": false,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 12,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "hideEmpty": true,
+            "hideZero": true,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "$tag_namespace_name:$tag_pod_name",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "namespace_name"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "pod_name"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "memory/usage",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "namespace_name",
+                  "operator": "=~",
+                  "value": "/^$Namespace$/"
+                },
+                {
+                  "condition": "AND",
+                  "key": "labels",
+                  "operator": "=~",
+                  "value": "/$App/"
+                },
+                {
+                  "condition": "AND",
+                  "key": "pod_name",
+                  "operator": "=~",
+                  "value": "/^$Pod$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Memory",
+          "tooltip": {
+            "msResolution": false,
+            "shared": false,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "bytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "title": "Row"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "influx",
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 3,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 3,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "$tag_namespace_name:$tag_pod_name",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "namespace_name"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "pod_name"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "network/rx_rate",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "namespace_name",
+                  "operator": "=~",
+                  "value": "/^$Namespace$/"
+                },
+                {
+                  "condition": "AND",
+                  "key": "pod_name",
+                  "operator": "=~",
+                  "value": "/^$Pod$/"
+                },
+                {
+                  "condition": "AND",
+                  "key": "labels",
+                  "operator": "=~",
+                  "value": "/$App/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Network RX Rate",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "Bps",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "influx",
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 13,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 3,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "$tag_namespace_name:$tag_pod_name",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "namespace_name"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "pod_name"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "network/rx_errors_rate",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "namespace_name",
+                  "operator": "=~",
+                  "value": "/^$Namespace$/"
+                },
+                {
+                  "condition": "AND",
+                  "key": "pod_name",
+                  "operator": "=~",
+                  "value": "/^$Pod$/"
+                },
+                {
+                  "condition": "AND",
+                  "key": "labels",
+                  "operator": "=~",
+                  "value": "/$App/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Network RX Error Rate",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "Bps",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "influx",
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 14,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 3,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "$tag_namespace_name:$tag_pod_name",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "namespace_name"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "pod_name"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "network/tx_rate",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "namespace_name",
+                  "operator": "=~",
+                  "value": "/^$Namespace$/"
+                },
+                {
+                  "condition": "AND",
+                  "key": "pod_name",
+                  "operator": "=~",
+                  "value": "/^$Pod$/"
+                },
+                {
+                  "condition": "AND",
+                  "key": "labels",
+                  "operator": "=~",
+                  "value": "/$App/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Network TX Rate",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "Bps",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "influx",
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 15,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 3,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "$tag_namespace_name:$tag_pod_name",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "namespace_name"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "pod_name"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "network/tx_errors_rate",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "namespace_name",
+                  "operator": "=~",
+                  "value": "/^$Namespace$/"
+                },
+                {
+                  "condition": "AND",
+                  "key": "pod_name",
+                  "operator": "=~",
+                  "value": "/^$Pod$/"
+                },
+                {
+                  "condition": "AND",
+                  "key": "labels",
+                  "operator": "=~",
+                  "value": "/$App/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Network TX Error Rate",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "Bps",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "title": "New row"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 16,
+          "isNew": true,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "sortDesc": true,
+            "total": true,
+            "values": true
+          },
+          "lines": false,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 2,
+          "points": true,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "$tag_namespace_name:$tag_pod_name",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "namespace_name"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "pod_name"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "previous"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "filesystem/usage",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "count"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "namespace_name",
+                  "operator": "=~",
+                  "value": "/^$Namespace$/"
+                },
+                {
+                  "condition": "AND",
+                  "key": "pod_name",
+                  "operator": "=~",
+                  "value": "/^$Pod$/"
+                },
+                {
+                  "condition": "AND",
+                  "key": "labels",
+                  "operator": "=~",
+                  "value": "/$App/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "File Usage",
+          "tooltip": {
+            "msResolution": true,
+            "shared": false,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "bytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 17,
+          "isNew": true,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": true,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 4,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "$tag_namespace_name:$tag_pod_name",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "namespace_name"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "pod_name"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "previous"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "cpu/request",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "namespace_name",
+                  "operator": "=~",
+                  "value": "/^$Namespace$/"
+                },
+                {
+                  "condition": "AND",
+                  "key": "pod_name",
+                  "operator": "=~",
+                  "value": "/^$Pod$/"
+                },
+                {
+                  "condition": "AND",
+                  "key": "labels",
+                  "operator": "=~",
+                  "value": "/$App/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "CPU Request",
+          "tooltip": {
+            "msResolution": true,
+            "shared": false,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "hertz",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 18,
+          "isNew": true,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "$tag_namespace_name:$tag_pod_name",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "namespace_name"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "pod_name"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "previous"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "memory/request",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "namespace_name",
+                  "operator": "=~",
+                  "value": "/^$Namespace$/"
+                },
+                {
+                  "condition": "AND",
+                  "key": "pod_name",
+                  "operator": "=~",
+                  "value": "/^$Pod$/"
+                },
+                {
+                  "condition": "AND",
+                  "key": "labels",
+                  "operator": "=~",
+                  "value": "/$App/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Memory Request",
+          "tooltip": {
+            "msResolution": true,
+            "shared": false,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "bytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "title": "New row"
+    }
+  ],
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": "prod",
+          "value": "prod"
+        },
+        "datasource": null,
+        "hide": 0,
+        "includeAll": true,
+        "multi": true,
+        "name": "Namespace",
+        "options": [
+          {
+            "selected": false,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "default",
+            "value": "default"
+          },
+          {
+            "selected": false,
+            "text": "dev",
+            "value": "dev"
+          },
+          {
+            "selected": false,
+            "text": "devops-test",
+            "value": "devops-test"
+          },
+          {
+            "selected": false,
+            "text": "kube-system",
+            "value": "kube-system"
+          },
+          {
+            "selected": true,
+            "text": "prod",
+            "value": "prod"
+          },
+          {
+            "selected": false,
+            "text": "qa",
+            "value": "qa"
+          },
+          {
+            "selected": false,
+            "text": "stage",
+            "value": "stage"
+          }
+        ],
+        "query": "SHOW TAG VALUES WITH KEY = namespace_name",
+        "refresh": 0,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "exchange,codename:jaeger,pod-template-hash:3753880881,tier:backend",
+          "value": "exchange,codename:jaeger,pod-template-hash:3753880881,tier:backend"
+        },
+        "datasource": null,
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "App",
+        "options": [
+          {
+            "selected": false,
+            "text": "aa-test-http-server",
+            "value": "aa-test-http-server"
+          },
+          {
+            "selected": false,
+            "text": "billboard,pod-template-hash:1307751742",
+            "value": "billboard,pod-template-hash:1307751742"
+          },
+          {
+            "selected": false,
+            "text": "dataingestioneventdata,service:dataingestioneventdata-v3",
+            "value": "dataingestioneventdata,service:dataingestioneventdata-v3"
+          },
+          {
+            "selected": false,
+            "text": "dataingestionsdk,service:dataingestionsdk-v3",
+            "value": "dataingestionsdk,service:dataingestionsdk-v3"
+          },
+          {
+            "selected": false,
+            "text": "dataingestiontpat,service:dataingestiontpat-v3",
+            "value": "dataingestiontpat,service:dataingestiontpat-v3"
+          },
+          {
+            "selected": false,
+            "text": "datasci-prediction-consumer",
+            "value": "datasci-prediction-consumer"
+          },
+          {
+            "selected": false,
+            "text": "default-http-backend",
+            "value": "default-http-backend"
+          },
+          {
+            "selected": false,
+            "text": "docker-healthz",
+            "value": "docker-healthz"
+          },
+          {
+            "selected": false,
+            "text": "eventdataConsumer,tier:backend",
+            "value": "eventdataConsumer,tier:backend"
+          },
+          {
+            "selected": true,
+            "text": "exchange,codename:jaeger,pod-template-hash:3753880881,tier:backend",
+            "value": "exchange,codename:jaeger,pod-template-hash:3753880881,tier:backend"
+          },
+          {
+            "selected": false,
+            "text": "grafana,name:grafana,pod-template-hash:1729551366,service:grafana",
+            "value": "grafana,name:grafana,pod-template-hash:1729551366,service:grafana"
+          },
+          {
+            "selected": false,
+            "text": "kafka-manager",
+            "value": "kafka-manager"
+          },
+          {
+            "selected": false,
+            "text": "kafkanamo,pod-template-hash:2143262048,tier:backend",
+            "value": "kafkanamo,pod-template-hash:2143262048,tier:backend"
+          },
+          {
+            "selected": false,
+            "text": "kafkaoffsetmonitor,service:kafkaoffsetmonitor",
+            "value": "kafkaoffsetmonitor,service:kafkaoffsetmonitor"
+          },
+          {
+            "selected": false,
+            "text": "kafkarelic,pod-template-hash:3119727065,tier:backend",
+            "value": "kafkarelic,pod-template-hash:3119727065,tier:backend"
+          },
+          {
+            "selected": false,
+            "text": "kibana",
+            "value": "kibana"
+          },
+          {
+            "selected": false,
+            "text": "kube-monitor,pod-template-hash:19168596",
+            "value": "kube-monitor,pod-template-hash:19168596"
+          },
+          {
+            "selected": false,
+            "text": "logstash,name:logstash-exchange-classic,topic:as-exchange",
+            "value": "logstash,name:logstash-exchange-classic,topic:as-exchange"
+          },
+          {
+            "selected": false,
+            "text": "logstash,pod-template-hash:2027190781,topic:as-access",
+            "value": "logstash,pod-template-hash:2027190781,topic:as-access"
+          },
+          {
+            "selected": false,
+            "text": "logstash,pod-template-hash:587763046,topic:ex-jaeger-auction",
+            "value": "logstash,pod-template-hash:587763046,topic:ex-jaeger-auction"
+          },
+          {
+            "selected": false,
+            "text": "logstash-kafka-as-exchange",
+            "value": "logstash-kafka-as-exchange"
+          },
+          {
+            "selected": false,
+            "text": "netflix-ice",
+            "value": "netflix-ice"
+          },
+          {
+            "selected": false,
+            "text": "nginx-ingress-lb-v4.1,name:nginx-ingress-lb-v4.1",
+            "value": "nginx-ingress-lb-v4.1,name:nginx-ingress-lb-v4.1"
+          },
+          {
+            "selected": false,
+            "text": "reporting-mongo",
+            "value": "reporting-mongo"
+          },
+          {
+            "selected": false,
+            "text": "runscope",
+            "value": "runscope"
+          },
+          {
+            "selected": false,
+            "text": "secor-albatross,service:secor-albatross",
+            "value": "secor-albatross,service:secor-albatross"
+          },
+          {
+            "selected": false,
+            "text": "secor-apppollinginfo,service:secor-apppollinginfo",
+            "value": "secor-apppollinginfo,service:secor-apppollinginfo"
+          },
+          {
+            "selected": false,
+            "text": "secor-attribution,service:secor-attribution",
+            "value": "secor-attribution,service:secor-attribution"
+          },
+          {
+            "selected": false,
+            "text": "secor-badPostbacks,service:secor-badPostbacks",
+            "value": "secor-badPostbacks,service:secor-badPostbacks"
+          },
+          {
+            "selected": false,
+            "text": "secor-datasci,service:secor-datasci",
+            "value": "secor-datasci,service:secor-datasci"
+          },
+          {
+            "selected": false,
+            "text": "secor-deliveries,service:secor-deliveries",
+            "value": "secor-deliveries,service:secor-deliveries"
+          },
+          {
+            "selected": false,
+            "text": "secor-deviceidattribution,service:secor-deviceidattribution",
+            "value": "secor-deviceidattribution,service:secor-deviceidattribution"
+          },
+          {
+            "selected": false,
+            "text": "secor-directattribution,service:secor-directattribution",
+            "value": "secor-directattribution,service:secor-directattribution"
+          },
+          {
+            "selected": false,
+            "text": "secor-directattributionraw,service:secor-directattributionraw",
+            "value": "secor-directattributionraw,service:secor-directattributionraw"
+          },
+          {
+            "selected": false,
+            "text": "secor-exchange,service:secor-exchange",
+            "value": "secor-exchange,service:secor-exchange"
+          },
+          {
+            "selected": false,
+            "text": "secor-installpostbacks,service:secor-installpostbacks",
+            "value": "secor-installpostbacks,service:secor-installpostbacks"
+          },
+          {
+            "selected": false,
+            "text": "secor-pd-sparkle-installs,service:secor-pd-sparkle-installs",
+            "value": "secor-pd-sparkle-installs,service:secor-pd-sparkle-installs"
+          },
+          {
+            "selected": false,
+            "text": "secor-playuseractions,service:secor-playuseractions",
+            "value": "secor-playuseractions,service:secor-playuseractions"
+          },
+          {
+            "selected": false,
+            "text": "secor-publisherinstall,service:secor-publisherinstall",
+            "value": "secor-publisherinstall,service:secor-publisherinstall"
+          },
+          {
+            "selected": false,
+            "text": "secor-pubsessions,service:secor-pubsessions",
+            "value": "secor-pubsessions,service:secor-pubsessions"
+          },
+          {
+            "selected": false,
+            "text": "secor-reportads,service:secor-reportads",
+            "value": "secor-reportads,service:secor-reportads"
+          },
+          {
+            "selected": false,
+            "text": "secor-requestads,service:secor-requestads",
+            "value": "secor-requestads,service:secor-requestads"
+          },
+          {
+            "selected": false,
+            "text": "secordataingestionerror,service:secordataingestionerror",
+            "value": "secordataingestionerror,service:secordataingestionerror"
+          },
+          {
+            "selected": false,
+            "text": "secordataingestioninfo,service:secordataingestioninfo",
+            "value": "secordataingestioninfo,service:secordataingestioninfo"
+          },
+          {
+            "selected": false,
+            "text": "secordataingestionsdkerror,service:secordataingestionsdkerror",
+            "value": "secordataingestionsdkerror,service:secordataingestionsdkerror"
+          },
+          {
+            "selected": false,
+            "text": "secordataingestionsdkinfo,service:secordataingestionsdkinfo",
+            "value": "secordataingestionsdkinfo,service:secordataingestionsdkinfo"
+          }
+        ],
+        "query": " SHOW TAG VALUES WITH KEY = labels WHERE namespace_name =~ /^$Namespace$/",
+        "refresh": 0,
+        "regex": "/app:(.*),?/",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": null,
+        "hide": 0,
+        "includeAll": true,
+        "multi": true,
+        "name": "Pod",
+        "options": [
+          {
+            "text": "All",
+            "value": "$__all",
+            "selected": true
+          },
+          {
+            "text": "jaeger-3753880881-1358j",
+            "value": "jaeger-3753880881-1358j",
+            "selected": false
+          },
+          {
+            "text": "jaeger-3753880881-9uc6r",
+            "value": "jaeger-3753880881-9uc6r",
+            "selected": false
+          },
+          {
+            "text": "jaeger-3753880881-hrnv3",
+            "value": "jaeger-3753880881-hrnv3",
+            "selected": false
+          },
+          {
+            "text": "jaeger-3753880881-jod4i",
+            "value": "jaeger-3753880881-jod4i",
+            "selected": false
+          },
+          {
+            "text": "jaeger-3753880881-q7pl0",
+            "value": "jaeger-3753880881-q7pl0",
+            "selected": false
+          }
+        ],
+        "query": "SHOW TAG VALUES WITH KEY = pod_name WHERE namespace_name =~ /^$Namespace$/ AND labels =~ /$App/",
+        "refresh": 1,
+        "regex": "",
+        "tagValuesQuery": "SHOW TAG VALUES WITH KEY = labels WHERE pod_name = /(.*)-.{5}$/",
+        "tagsQuery": "SHOW TAG VALUES WITH KEY = labels",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "annotations": {
+    "list": []
+  },
+  "refresh": "30s",
+  "schemaVersion": 12,
+  "version": 29,
+  "links": [],
+  "gnetId": null
+}

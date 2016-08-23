@@ -1,5 +1,7 @@
 {
-  "id": 1,
+  "dashboard": {    
+  {
+  "id": "",
   "title": "Pod Stats",
   "tags": [],
   "style": "dark",
@@ -96,12 +98,6 @@
                   {
                     "params": [],
                     "type": "mean"
-                  },
-                  {
-                    "params": [
-                      " / 100"
-                    ],
-                    "type": "math"
                   }
                 ]
               ],
@@ -128,7 +124,7 @@
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "CPU",
+          "title": "CPU Millicores",
           "tooltip": {
             "msResolution": false,
             "shared": false,
@@ -1284,7 +1280,7 @@
     }
   ],
   "time": {
-    "from": "now-1h",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {
@@ -1316,10 +1312,9 @@
     "list": [
       {
         "current": {
-          "selected": true,
-          "text": "",
+          "text": "All",
           "value": [
-            ""
+            "$__all"
           ],
           "tags": []
         },
@@ -1328,42 +1323,63 @@
         "includeAll": true,
         "multi": true,
         "name": "Namespace",
-        "options": [""],
+        "options": [
+          {
+            "text": "All",
+            "value": "$__all",
+            "selected": true
+          }
+        ],
         "query": "SHOW TAG VALUES WITH KEY = namespace_name",
-        "refresh": 0,
+        "refresh": 1,
         "regex": "",
         "type": "query"
       },
       {
         "current": {
-          "text": "",
+          "text": "None",
           "value": "",
-          "tags": []
+          "isNone": true
         },
         "datasource": null,
         "hide": 0,
         "includeAll": false,
         "multi": false,
         "name": "App",
-        "options": [""],
+        "options": [
+          {
+            "text": "None",
+            "value": "",
+            "isNone": true,
+            "selected": true
+          }
+        ],
         "query": " SHOW TAG VALUES WITH KEY = labels WHERE namespace_name =~ /^$Namespace$/",
-        "refresh": 0,
+        "refresh": 2,
         "regex": "/app:(.*),?/",
         "type": "query"
       },
       {
         "current": {
-          "text": "All",
-          "value": "$__all"
+          "value": [
+            "$__all"
+          ],
+          "text": "All"
         },
         "datasource": null,
         "hide": 0,
         "includeAll": true,
         "multi": true,
         "name": "Pod",
-        "options": [""],
+        "options": [
+          {
+            "text": "All",
+            "value": "$__all",
+            "selected": true
+          }
+        ],
         "query": "SHOW TAG VALUES WITH KEY = pod_name WHERE namespace_name =~ /^$Namespace$/ AND labels =~ /$App/",
-        "refresh": 1,
+        "refresh": 2,
         "regex": "",
         "tagValuesQuery": "SHOW TAG VALUES WITH KEY = labels WHERE pod_name = /(.*)-.{5}$/",
         "tagsQuery": "SHOW TAG VALUES WITH KEY = labels",
@@ -1375,9 +1391,10 @@
   "annotations": {
     "list": []
   },
-  "refresh": "30s",
+  "refresh": "5s",
   "schemaVersion": 12,
-  "version": 31,
+  "version": 2,
   "links": [],
   "gnetId": null
+}
 }

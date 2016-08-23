@@ -4,7 +4,6 @@ metadata:
   name: "grafana"
   labels:
     app: "grafana"
-  namespace: "prod"
 spec:
   replicas: 1
   template:
@@ -19,16 +18,9 @@ spec:
           image: "grafana/grafana:3.1.0-beta1"
           env: 
             - name: GF_SERVER_ROOT_URL
-              value: http://grafana.prod.svc.cluster.local:3000
+              value: http://grafana.default.svc.cluster.local:3000
             - name: GF_SECURITY_ADMIN_PASSWORD
               value: secret
-          #resources:
-          #  requests:
-          #    memory: "8Gi"
-          #    cpu: "2"
-          #  limits:
-          #    memory: "10Gi"
-          #    cpu: "4"
           ports:
             - containerPort: 3000
           imagePullPolicy: "Always"

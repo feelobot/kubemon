@@ -6,7 +6,6 @@ metadata:
     version: v6
     app: heapster
   name: heapster
-  namespace: kube-system
 spec:
   revisionHistoryLimit: 5
   replicas: 1
@@ -22,10 +21,6 @@ spec:
         command:
         - /heapster
         - --source=kubernetes:https://kubernetes.default.svc
-        - --sink=influxdb:http://influxdb.kube-system.svc.cluster.local:8086/
-        resources:
-          limits:
-            cpu: "2"
-            memory: "2Gi"
+        - --sink=influxdb:http://influxdb.default.svc.cluster.local:8086/
         
 

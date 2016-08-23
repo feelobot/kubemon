@@ -4,8 +4,8 @@ metadata:
   name: grafana
   labels:
     app: grafana
-  namespace: prod
 spec:
+  type: "LoadBalancer"
   ports:
   - port: 3000
     protocol: TCP

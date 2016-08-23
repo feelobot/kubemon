@@ -4,7 +4,6 @@ metadata:
   name: kapacitor
   labels:
     app: kapacitor
-  namespace: kube-system
 spec:
   ports:
   - port: 9092

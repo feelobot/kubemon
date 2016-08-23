@@ -4,7 +4,6 @@ metadata:
   name: influxdb
   labels:
     app: influxdb
-  namespace: kube-system
 spec:
   ports:
   - port: 8086

@@ -4,7 +4,6 @@ metadata:
   name: "kapacitor"
   labels:
     app: "kapacitor"
-  namespace: kube-system
 spec:
   replicas: 1
   template:
@@ -16,7 +15,7 @@ spec:
     spec:
       containers:
         - name: "kapacitor"
-          image: "kapacitor:0.13.1" #1.0.0-beta1-alpine"
+          image: "kapacitor:1.0.0-beta1"
           env:
             - name: KAPACITOR_HOSTNAME
               value: "kapacitor.kube-system.svc.cluster.local"
@@ -28,15 +27,9 @@ spec:
               value: "http://influxdb.kube-system.svc.cluster.local:8086/"
             - name: KAPACITOR_LOGGING_LEVEL
               value: "DEBUG"
-          resources:
-            requests:
-              memory: "2Gi"
-              cpu: "2"
-            limits:
-              memory: "4Gi"
-              cpu: "4"
           ports:
             - containerPort: 9092
             - containerPort: 43309
+              protocol: UDP
               name: udp
           imagePullPolicy: "Always"

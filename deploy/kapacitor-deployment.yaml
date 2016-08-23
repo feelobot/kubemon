@@ -18,13 +18,13 @@ spec:
           image: "kapacitor:1.0.0-beta1"
           env:
             - name: KAPACITOR_HOSTNAME
-              value: "kapacitor.kube-system.svc.cluster.local"
+              value: "kapacitor.default.svc.cluster.local"
             - name: KAPACITOR_LOGGING_LEVEL
               value: "INFO"
             - name: KAPACITOR_REPORTING_ENABLED
               value: "false"
             - name: KAPACITOR_INFLUXDB_0_URLS_0
-              value: "http://influxdb.kube-system.svc.cluster.local:8086/"
+              value: "http://influxdb.default.svc.cluster.local:8086/"
             - name: KAPACITOR_LOGGING_LEVEL
               value: "DEBUG"
           ports:

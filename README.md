@@ -2,7 +2,7 @@
 Kubernetes Monitoring & Alerting with Influx/Grafana/Kapacitor/Heapster
 
 ## Dependencies:
-minikube (for now)
+https://github.com/kubernetes/minikube (for now)
 
 ## Deploy:
 

@@ -9,3 +9,9 @@ https://github.com/kubernetes/minikube (for now)
 ```
 ./kubemon.sh
 ```
+
+## Teardown:
+```
+kubectl delete -f deploy/
+```
+

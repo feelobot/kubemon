@@ -10,8 +10,15 @@ kubectl create -f deploy/ 1>/dev/null 2>&1
 echo "Waiting for things to come up..."
 sleep 10
 echo "Creating Datasource & Dashboards..."
-curl "http://admin:secret@`minikube service grafana --url | sed 's/http\:\/\///' `/api/datasources" -X POST -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"name":"influx","type":"influxdb","url":"http://influxdb.default.svc.cluster.local:8086/","access":"proxy","isDefault":true,"database":"k8s","user":"","password":""}'
-curl -d @dashboard.json "http://admin:secret@`minikube service grafana --url | sed 's/http\:\/\///' `/api/dashboards/db" -X POST -H 'Content-Type: application/json;charset=UTF-8'
-curl -d @cluster.json "http://admin:secret@`minikube service grafana --url | sed 's/http\:\/\///' `/api/dashboards/db" -X POST -H 'Content-Type: application/json;charset=UTF-8'
-echo "done"
-minikube service grafana
+
+GRAFANA_URL=`kubectl describe service grafana | grep Ingress | awk '{print "admin:secret@"$3}' | sed 's/$/:3000/'`
+printf "GRAFANA_URL: %s\n" "$GRAFANA_URL"
+
+printf "Creating InfluxDB data source...\n"
+curl `echo $GRAFANA_URL | sed 's/$/\/api\/datasources/'` -X POST -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"name":"influx","type":"influxdb","url":"http://influxdb.default.svc.cluster.local:8086/","access":"proxy","isDefault":true,"database":"k8s","user":"","password":""}'
+printf "\nCreating dashboard: dashboard...\n"
+curl -d @dashboard.json `echo $GRAFANA_URL | sed 's/$/\/api\/dashboards\/db/'` -X POST -H 'Content-Type: application/json;charset=UTF-8'
+printf "\nCreating dashboard: cluster..\n"
+curl -d @cluster.json `echo $GRAFANA_URL | sed 's/$/\/api\/dashboards\/db/'` -X POST -H 'Content-Type: application/json;charset=UTF-8'
+printf "\ndone"
+kubectl describe service grafana
